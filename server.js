@@ -1,6 +1,8 @@
 import express from 'express';
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -67,8 +69,8 @@ app.get('/health', (req, res) => {
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Function docs: GET http://localhost:${PORT}/functions/base64Encode`);
-  console.log(`Function endpoint: POST http://localhost:${PORT}/functions/base64Encode`);
+  console.log(`Function docs: GET https://wakeflow-task.vercel.app//functions/base64Encode`);
+  console.log(`Function endpoint: POST https://wakeflow-task.vercel.app//functions/base64Encode`);
 });
 
 // Test token validation endpoint
