@@ -55,7 +55,23 @@ export const base64Encode = async (req, res) => {
 app.route('/functions/base64Encode')
   // GET: Return function documentation
   .get((req, res) => {
-    res.json(functionDocs);
+    try {
+      if (!functionDocs) {
+        return res.status(404).json({
+          success: false,
+          error: "Function documentation not found"
+        });
+      }
+      res.json({
+        success: true,
+        data: functionDocs
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: "Error retrieving function documentation"
+      });
+    }
   })
   // POST: Execute the function
   .post(base64Encode);
@@ -68,9 +84,10 @@ app.get('/health', (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
+  const baseUrl = 'https://wakeflow-task.vercel.app';
   console.log(`Server running on port ${PORT}`);
-  console.log(`Function docs: GET https://wakeflow-task.vercel.app//functions/base64Encode`);
-  console.log(`Function endpoint: POST https://wakeflow-task.vercel.app//functions/base64Encode`);
+  console.log(`Function docs: GET ${baseUrl}/functions/base64Encode`);
+  console.log(`Function endpoint: POST ${baseUrl}/functions/base64Encode`);
 });
 
 // Test token validation endpoint
