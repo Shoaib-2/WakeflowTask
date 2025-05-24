@@ -1,0 +1,21 @@
+{
+  "name": "func-live-base64",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "func-live-base64": "file:",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.10"
+  }
+}
