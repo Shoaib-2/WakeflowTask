@@ -37,13 +37,13 @@ export const ShoaibBase64Encode = async (req, res) => {
 };
 
 // Route to get function documentation /functions/myBase64Encode
-app.route('/functions/ShoaibBase64Encode ')
+app.route('/functions/ShoaibBase64Encode')
   // GET: Return function documentation
   .get((req, res) => {
     try {
       // Return docs object directly, as required by func.live
       res.json({
-        name: "ShoaibBase64Encode ",
+        name: "ShoaibBase64Encode",
         description: "Encode anything to base64",
         input: {
           type: "string",
@@ -75,14 +75,14 @@ app.get('/health', (req, res) => {
 app.listen(PORT, () => {
   const baseUrl = 'https://wakeflow-task.vercel.app';
   console.log(`Server running on port ${PORT}`);
-  console.log(`Function docs: GET ${baseUrl}/functions/ShoaibBase64Encode `);
-  console.log(`Function endpoint: POST ${baseUrl}/functions/ShoaibBase64Encode `);
+  console.log(`Function docs: GET ${baseUrl}/functions/ShoaibBase64Encode`);
+  console.log(`Function endpoint: POST ${baseUrl}/functions/ShoaibBase64Encode`);
 });
 
 // Test token validation endpoint
 app.post('/test-submission', async (req, res) => {  const token = process.env.FUNC_TOKEN; 
   console.log("Token:", token);
-  const url = "https://wakeflow-task.vercel.app/functions/ShoaibBase64Encode ";
+  const url = "https://wakeflow-task.vercel.app/functions/ShoaibBase64Encode";
   
   try {
     const response = await fetch('https://api.func.live/functions', {
@@ -109,5 +109,5 @@ app.post('/test-submission', async (req, res) => {  const token = process.env.FU
   }
 });
 
-// Export the myBase64Encode function for testing
+// Export the Base64Encode function for testing
 export default app;
