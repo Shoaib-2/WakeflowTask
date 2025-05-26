@@ -10,21 +10,6 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Function documentation (returned on GET)
-const functionDocs = {
-  "name": "base64Encode",
-  "description": "Encode anything to base64",
-  "input": {
-    "type": "string", 
-    "description": "Input the data you'd like to encode to base64",
-    "example": "Why ruby is difficult for beginners ?"
-  },
-  "output": {
-    "type": "string",
-    "description": "Base64 encoded string", 
-    "example": "Ruby can be difficult for beginners because it has a lot of syntax and different ways of doing things, which can be overwhelming for someone just starting out with programming. Additionally, Ruby's object-oriented nature and its focus on readability and expressiveness can be challenging for beginners to grasp."
-  }
-};
 
 // Function to encode a string to base64
 export const base64Encode = async (req, res) => {
@@ -56,19 +41,23 @@ app.route('/functions/base64Encode')
   // GET: Return function documentation
   .get((req, res) => {
     try {
-      if (!functionDocs) {
-        return res.status(404).json({
-          success: false,
-          error: "Function documentation not found"
-        });
-      }
+      // Return docs object directly, as required by func.live
       res.json({
-        success: true,
-        data: functionDocs
+        name: "base64Encode",
+        description: "Encode anything to base64",
+        input: {
+          type: "string",
+          description: "Input the data you'd like to encode to base64",
+          example: "Hello, world"
+        },
+        output: {
+          type: "string",
+          description: "Base64 encoded string",
+          example: "SGVsbG8sIHdvcmxk"
+        }
       });
     } catch (error) {
       res.status(500).json({
-        success: false,
         error: "Error retrieving function documentation"
       });
     }
@@ -84,7 +73,7 @@ app.get('/health', (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  const baseUrl = 'https://wakeflow-task.vercel.app';
+  const baseUrl = 'https://wakeflow-task.vercel.app/functions';
   console.log(`Server running on port ${PORT}`);
   console.log(`Function docs: GET ${baseUrl}/functions/base64Encode`);
   console.log(`Function endpoint: POST ${baseUrl}/functions/base64Encode`);
@@ -93,6 +82,7 @@ app.listen(PORT, () => {
 // Test token validation endpoint
 app.post('/test-submission', async (req, res) => {
   const token = process.env.FUNC_TOKEN; 
+  console.log("Token:", token);
   const url = "https://wakeflow-task.vercel.app/functions/base64Encode";
   
   try {
