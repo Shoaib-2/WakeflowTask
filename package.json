@@ -15,8 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "func-live-base64": "file:",
-    "node-fetch": "^3.3.2",
+    "func-live-base64": "file:"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }
