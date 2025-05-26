@@ -80,7 +80,7 @@ app.listen(PORT, () => {
 app.post('/test-submission', async (req, res) => {
   const token = process.env.FUNC_TOKEN; 
   console.log("Token:", token);
-  const url = "https://wakeflow-task.vercel.app/functions/base64Encode";
+  const url = "https://wakeflow-task-pj9d3o1hc-shoaib-2s-projects.vercel.app/functions/base64Encode";
   
   try {
     const response = await fetch('https://api.func.live/functions', {
