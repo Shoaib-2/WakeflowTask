@@ -1,4 +1,8 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -69,8 +73,7 @@ app.get('/health', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-  const baseUrl = 'https://wakeflow-task.vercel.app/functions';
+app.listen(PORT, () => {  const baseUrl = 'https://wakeflow-task-pj9d3o1hc-shoaib-2s-projects.vercel.app';
   console.log(`Server running on port ${PORT}`);
   console.log(`Function docs: GET ${baseUrl}/functions/base64Encode`);
   console.log(`Function endpoint: POST ${baseUrl}/functions/base64Encode`);
