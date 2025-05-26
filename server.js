@@ -73,17 +73,17 @@ app.get('/health', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {  const baseUrl = 'https://wakeflow-task-pj9d3o1hc-shoaib-2s-projects.vercel.app';
+app.listen(PORT, () => {
+  const baseUrl = 'https://wakeflow-task.vercel.app';
   console.log(`Server running on port ${PORT}`);
   console.log(`Function docs: GET ${baseUrl}/functions/base64Encode`);
   console.log(`Function endpoint: POST ${baseUrl}/functions/base64Encode`);
 });
 
 // Test token validation endpoint
-app.post('/test-submission', async (req, res) => {
-  const token = process.env.FUNC_TOKEN; 
+app.post('/test-submission', async (req, res) => {  const token = process.env.FUNC_TOKEN; 
   console.log("Token:", token);
-  const url = "https://wakeflow-task-pj9d3o1hc-shoaib-2s-projects.vercel.app/functions/base64Encode";
+  const url = "https://wakeflow-task.vercel.app/functions/base64Encode";
   
   try {
     const response = await fetch('https://api.func.live/functions', {
